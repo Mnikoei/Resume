@@ -1,0 +1,382 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 15px;
+    font-family: 'Open Sans', 'Roboto', 'Ubuntu', sans-serif;
+}
+
+body{
+    background-color: rgb(58, 55, 55);
+}
+
+/**********test**********/
+
+.border{
+    border: 1px solid rgb(199, 198, 198);
+}
+
+/********************/
+
+
+.bg-red{
+    background-color: red;
+}
+
+.bg-blue{
+    background: #517DA2;
+}
+
+.text-white{
+    color: #FFF;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.chat-layout{
+    width: 26rem;
+    overflow: hidden;
+}
+
+.header{
+   padding: 0.6rem .7rem;
+   position: relative;
+}
+
+.header::after {
+    content: "";
+    display: block;
+    width: 26rem;
+    height: 0rem;
+    background: #517DA2;
+    position: absolute;
+    left: 0;
+    transition: all .14s;
+    z-index: 2;
+}
+
+
+.header .call-icon {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    right: 2.8rem;
+    z-index: 4;
+    transform: translateY(-2.86rem);
+    border-radius: 2rem;
+    transition: all .14s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.call-icon-show-transition {
+    opacity: 1 !important;
+}
+
+.call-icon svg {
+    width: 1.5rem;
+    transform: scale(.8);
+}
+
+
+.header .message-icon {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    right: 1rem;
+    z-index: 4;
+    background: white;
+    transform: translateY(-1rem) scale(0);
+    border-radius: 2rem;
+    transition: all .14s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    box-shadow: 0 0 1px 0 #00000096;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.message-icon-change-position {
+    transform: translateY(2.5rem) !important;
+    scale: (1);
+    opacity: 1 !important;
+}
+
+.message-icon svg {
+    width: 1.5rem;
+    transform: translateY(.15rem);
+}
+
+.expand-header::after {
+    height: 4rem;
+}
+
+.header-body{
+    display: flex;
+    align-items: center;
+}
+
+.header .header-body .icon{
+    flex-grow: 6;    
+    padding-left: .46rem;
+}
+
+.header .header-body .icon .arrow-left-icon svg{
+   width: 1rem;
+   vertical-align: middle;
+}
+
+#arrow-left-icon{
+    cursor: pointer;
+}
+
+.profile{
+    width: 2.6rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    flex-grow: 1;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .14s;
+}
+
+.profile .picture {
+    width: 100%;
+}
+
+.name-status{
+    flex-grow: 20;
+    text-align: left;
+    padding: 0 .7rem;
+    transition: all .14s;
+}
+
+.header .change-position{
+    transform: translate(-3.1rem , 3rem);
+    z-index: 3;
+}
+
+.name{
+    font-size: 1.1rem;
+}
+
+.status{
+    opacity: .7;
+    font-size: .9rem;
+}
+
+.body {
+    background: url(./Background.jpg);
+    background-size: cover;
+    height: 40.3rem;
+    position: relative;
+}
+
+.body .chat-messages {
+    padding: .2rem 0;
+    display: flex;
+    flex-direction: column;
+ }
+
+.body .chat-messages .chat-item {
+    border-radius: .5rem;
+}
+
+.body .chat-messages .date {
+    /* background-color: rgba(0, 0, 0, 0.26); */
+    color: white;
+    text-align: center;
+    font-size: .85rem; 
+ }
+
+ .date-value {
+    display: inline-block;
+    background: #403a3a61;
+    border-radius: .6rem;
+    padding: .2rem .5rem;
+    margin: .52rem;
+ }
+
+
+.body .chat-messages .contact-message {
+    margin: 0 0 .22rem .5rem;
+    background-color: white;
+    padding: .4rem;
+    max-width: 82%;
+    position: relative;
+    border-bottom-left-radius: 0 !important;
+}
+
+.body .chat-messages .author-message {
+    margin: 0 .5rem .22rem 0;
+    background-color: #effdde;
+    padding: .4rem;
+    width: 100%;
+    max-width: 82%;
+    position: relative;
+    border-bottom-right-radius: 0 !important;
+    align-self: flex-end;
+}
+
+.contact-message::after , .author-message::after{
+    content: "";
+    width: .6rem;
+    height: 1rem;
+    position: absolute;
+    bottom: -.019rem;
+    clip-path: polygon(0 95%, 0 100%, 99% 100%, 100% 0, 88% 22%, 75% 45%, 37% 76%);
+}
+
+.contact-message::after{
+    left: -.5rem;
+    background-color:white ;
+}
+
+.author-message::after{
+    right: -.5rem;
+    background-color:#effdde ;
+    transform: scaleX(-1);
+}
+
+
+.body .profile-info {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    height: 98.8%;
+    top: 3.4rem;
+    background-color: rgb(233, 230, 230);
+    transform: translateX(100.3%);
+    transition: all .08s;
+    opacity: 0;
+    animation-duration: .07s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes profile_info-change-position{
+    0% {
+       opacity: .04;
+    }
+    60%{
+        opacity: 1;
+    }
+    /* 80%{
+        opacity: 0;
+    }  */
+    100%{
+        opacity: 1;
+    }
+}
+
+.body .profile_info-change-position {
+    transform: translateX(0) !important;
+    animation-name: profile_info-change-position;
+}
+
+.profile_info-header{
+    color: #517DA2;
+}
+
+.profile-info .info {
+    background-color: white;
+    padding: 1rem;
+}
+
+.profile-info .info > section {
+    margin: 1.16rem 0;
+}
+
+.profile-info .content {
+    padding-bottom: .7rem ;
+}
+.profile-info .title {
+    color: dimgray;
+}
+
+.menu-icon{
+    flex-grow: 1;
+    padding-right: .46rem;
+    text-align: right;
+}
+.menu-icon::after{
+    content: '\2807';
+    font-size: 1.4rem;
+    transform: translateX(0.5rem);
+    display: block;
+}
+
+
+
+.message-box {
+    height: 2.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:rgba(125, 146, 151, 0.877);
+    background-color: white;
+    padding: 0 1rem ;
+}
+
+.message-box .gif-icon::after{
+    content: 'GIF';
+    border:.12rem solid rgba(125, 146, 151, 0.877);
+    color: rgba(125, 146, 151, 0.877);
+    border-radius: .45rem;
+    font-size: .67rem;
+    font-weight: 600;
+    padding: .2rem .1rem .1rem .1rem ;
+
+}
+
+.message-box .icon {
+    text-align: center;
+}
+
+.message-box .gif-icon {
+    text-align: left;
+}
+
+.message-box .gif-icon , .attach-icon, .record-icon{
+    flex-grow: 2;
+}
+
+.message-box .attach-icon, .record-icon{
+    flex-grow: 3;
+}
+
+.message-box .attach-icon{
+    display: block;
+    margin: auto;
+    padding: .4rem .1rem .1rem .1rem ;
+    text-align: right;
+}
+.message-box .attach-icon svg{
+    width: 1.5rem;
+}
+.message-box .record-icon{
+    display: block;
+    margin: auto;
+    padding: .4rem .1rem .1rem .1rem ;
+    text-align: right;
+}
+.message-box .record-icon svg{
+    width: 1.5rem;
+}
+.message-box .input-message{
+    flex-grow: 32;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
