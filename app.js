@@ -8,19 +8,17 @@ var profileInfo = document.getElementById('profile-info');
 var messageIcon = document.getElementById('message-icon'); 
 var callIcon = document.getElementById('call-icon'); 
 var arrowLeftIcon = document.getElementById('arrow-left-icon'); 
+var inputMessage = document.getElementById('input-message');
 
 var EventController = {
 
 
     init : function(){
         
-        var inputMessage = document.getElementById('input-message');
 
         inputMessage.addEventListener('click' , function(){
            window.open( chatUrl , '_blank');
         });
-
-        var nameStatus = document.getElementById('name-status');
 
         nameStatus.addEventListener('click' , function(e){
            EventController.showProfile(e)
@@ -38,8 +36,10 @@ var EventController = {
             window.open('tel:+989917257355')
         });
 
-
-        
+        profile.addEventListener('click', function(){
+            this.showProfilePic()
+        }.bind(this));
+  
 
     },
     showProfile : function(e){
@@ -52,13 +52,18 @@ var EventController = {
         ? profile.classList.remove('change-position')
         : profile.classList.add('change-position'); 
 
+        profile.hasAttribute('on-profile-info')
+        ? profile.removeAttribute('on-profile-info') 
+        : profile.setAttribute('on-profile-info' , '')
+        
+      
         nameStatus.classList.contains('change-position')
         ? nameStatus.classList.remove('change-position')
         : nameStatus.classList.add('change-position');
         
-        profileInfo.classList.contains('profile_info-change-position')
-        ? profileInfo.classList.remove('profile_info-change-position')
-        : profileInfo.classList.add('profile_info-change-position'); 
+        profileInfo.classList.contains('profile-info-change-position')
+        ? profileInfo.classList.remove('profile-info-change-position')
+        : profileInfo.classList.add('profile-info-change-position'); 
        
         messageIcon.classList.contains('message-icon-change-position')
         ? messageIcon.classList.remove('message-icon-change-position')
@@ -68,6 +73,27 @@ var EventController = {
         ? callIcon.classList.remove('call-icon-show-transition')
         : callIcon.classList.add('call-icon-show-transition'); 
 
+    },
+    showProfilePic : function(){
+  
+        var profilePic = document.querySelector('[on-profile-info]')
+        if(!profilePic) return;
+        
+        if(!!profilePic && profilePic.classList.contains('profile-increase-scale')){
+            profileInfo.classList.remove('profile-info-change-position-for-profile-pic');
+            profile.classList.remove('profile-increase-scale');
+            nameStatus.classList.remove('d-none');
+            callIcon.classList.remove('d-none');
+            messageIcon.classList.remove('d-none');
+            
+        }else{
+            profileInfo.classList.add('profile-info-change-position-for-profile-pic');
+            profile.classList.add('profile-increase-scale');
+            nameStatus.classList.add('d-none');
+            callIcon.classList.add('d-none');
+            messageIcon.classList.add('d-none');
+        }
+        
     }
 
 }
