@@ -172,6 +172,7 @@ body{
     text-align: left;
     padding: 0 .7rem;
     transition: all .14s;
+    cursor: pointer;
 }
 
 .header .change-position{
@@ -203,6 +204,7 @@ body{
 
 .body .chat-messages .chat-item {
     border-radius: .5rem;
+    position: relative;
 }
 
 .body .chat-messages .date {
@@ -225,20 +227,43 @@ body{
     margin: 0 0 .22rem .5rem;
     background-color: white;
     padding: .4rem;
+    min-width: 66%;
     max-width: 82%;
     position: relative;
     border-bottom-left-radius: 0 !important;
+}
+
+.contact-message .message-time{ 
+    position: absolute;
+    right: 0.58rem;
+    bottom: .2rem;
+    color: rgba(125, 146, 151, 0.877);
+    font-size: .67em;
 }
 
 .body .chat-messages .author-message {
     margin: 0 .5rem .22rem 0;
     background-color: #effdde;
     padding: .4rem;
-    width: 100%;
+    min-width: 66%;
     max-width: 82%;
     position: relative;
     border-bottom-right-radius: 0 !important;
     align-self: flex-end;
+}
+
+.author-message svg {
+    width: .7rem;
+    fill: #28b925;
+    margin-left: .38rem;
+}
+
+.author-message .message-time{ 
+    position: absolute;
+    right: 0.58rem;
+    bottom: .2rem;
+    color: #28b925;
+    font-size: .67em;
 }
 
 .contact-message::after , .author-message::after{
